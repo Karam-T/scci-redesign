@@ -182,6 +182,103 @@ footer { background: #3d3d3d; color: rgba(255,255,255,0.6); }
 .qr-info span { font-size: 11.5px; color: rgba(255,255,255,0.4); line-height: 1.55; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); }
 .footer-bottom-inner { max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; justify-content: space-between; font-size: 11.5px; color: rgba(255,255,255,0.3); }
+
+/* ═══════════════════════════════
+   TABLET  (max 1024px)
+═══════════════════════════════ */
+@media (max-width: 1024px) {
+  /* topbar: hide left links, keep right */
+  .topbar-left { display: none; }
+
+  /* nav */
+  .nav-inner { padding: 0 20px; }
+  .nav-links a { padding: 8px 9px; font-size: 12px; }
+
+  /* hero */
+  .hero { height: 460px; }
+  .hero h1 { font-size: 34px; }
+
+  /* dir */
+  .dir-inner { grid-template-columns: 1fr; gap: 20px; }
+
+  /* president */
+  .president-card { grid-template-columns: 240px 1fr; }
+  .president-body { padding: 28px 32px; }
+
+  /* media row: 2 per row */
+  .media-row { flex-wrap: wrap; }
+  .media-item { flex: 1 1 calc(50% - 5px); }
+  .media-item img { height: 220px; }
+
+  /* projects strip stays horizontal — fine on tablet */
+
+  /* footer */
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+/* ═══════════════════════════════
+   MOBILE  (max 680px)
+═══════════════════════════════ */
+@media (max-width: 680px) {
+  /* topbar: hide everything except socials */
+  .topbar-left,
+  .topbar-right > a { display: none; }
+  .topbar-socials { border-left: none; padding-left: 0; }
+  .topbar-inner { justify-content: center; }
+
+  /* nav: logo only + hamburger hint */
+  .nav-inner { height: 60px; padding: 0 16px; }
+  .nav-links { display: none; }
+  .logo img { height: 42px; }
+
+  /* hero */
+  .hero { height: auto; padding: 52px 0 48px; }
+  .hero-inner { padding: 0 20px; }
+  .hero h1 { font-size: 28px; letter-spacing: -0.02em; }
+  .hero-eco-btns { flex-direction: column; }
+  .eco-btn { text-align: center; }
+
+  /* dir */
+  .dir-section { padding: 28px 20px; }
+  .dir-inner { grid-template-columns: 1fr; gap: 16px; }
+  .renewal-box { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .renewal-btn { align-self: stretch; text-align: center; }
+
+  /* ticker: single item */
+  .ticker-items { gap: 0; }
+  .ticker-sep,
+  .ticker-items .ticker-item:not(:first-child) { display: none; }
+
+  /* section padding */
+  .sec { padding: 48px 20px; }
+
+  /* president: stack vertically */
+  .president-card { grid-template-columns: 1fr; }
+  .president-img-col { height: 280px; }
+  .president-img-col img { object-position: top; }
+  .president-body { padding: 28px 24px; }
+  .president-qmark { font-size: 48px; }
+  .president-text { font-size: 14px; }
+
+  /* sec header stack */
+  .sec-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  /* media row: stack vertically */
+  .media-sec { padding: 48px 0; }
+  .media-sec .sec-inner { padding: 0 16px; }
+  .media-row { flex-direction: column; gap: 10px; }
+  .media-item { flex: none; width: 100%; }
+  .media-item img { height: 200px; }
+
+  /* projects strip */
+  .projects-sec { padding: 48px 0; }
+  .projects-sec .sec-inner { padding: 0 16px; }
+  .proj-item { flex: 0 0 150px; }
+
+  /* footer: single column */
+  .footer-main { grid-template-columns: 1fr; gap: 36px; padding: 40px 20px 32px; }
+  .footer-bottom-inner { flex-direction: column; gap: 6px; text-align: center; padding: 16px 20px; }
+}
 </style>
 </head>
 <body>
