@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sialkot Chamber of Commerce & Industry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #0c1c4a;
+  --royal:      #1535a0;
+  --blue-dark:  #0e2580;
+  --gold:       #b8841e;
+  --gold-light: #faf3e7;
+  --white:      #ffffff;
+  --off:        #f4f6fb;
+  --border:     #dce2f0;
+  --txt:        #111827;
+  --txt-mid:    #374151;
+  --txt-soft:   #6b7280;
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.08);
+  --shadow:     0 4px 20px rgba(12,28,74,0.10);
+  --shadow-lg:  0 10px 40px rgba(12,28,74,0.15);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: var(--txt); -webkit-font-smoothing: antialiased; font-size: 15px; line-height: 1.6; }
+
+/* ─── TOP BAR ─── */
+.topbar { background: var(--navy); font-size: 11.5px; }
+.topbar-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: stretch; }
+.topbar-left { display: flex; }
+.topbar-left a { color: rgba(255,255,255,0.65); text-decoration: none; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: color 0.15s, background 0.15s; display: flex; align-items: center; }
+.topbar-left a:hover { color: #fff; background: rgba(255,255,255,0.07); }
+.topbar-right { display: flex; align-items: center; gap: 0; }
+.topbar-right a { color: rgba(255,255,255,0.65); text-decoration: none; padding: 8px 14px; font-size: 11.5px; transition: color 0.15s; border-left: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; }
+.topbar-right a:hover { color: #fff; }
+.topbar-socials { display: flex; border-left: 1px solid rgba(255,255,255,0.1); }
+.topbar-socials a { color: rgba(255,255,255,0.5); padding: 8px 10px; font-size: 11px; font-weight: 600; transition: color 0.15s; }
+.topbar-socials a:hover { color: #fff; }
+
+/* ─── NAV ─── */
+nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: var(--shadow-sm); }
+.nav-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+.logo img { height: 52px; width: auto; }
+.nav-links { display: flex; align-items: center; }
+.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--txt-mid); text-decoration: none; padding: 8px 12px; letter-spacing: 0.02em; transition: color 0.15s; position: relative; }
+.nav-links a:hover { color: var(--royal); }
+.nav-links a.active { color: var(--royal); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: -1px; left: 12px; right: 12px; height: 2px; background: var(--royal); border-radius: 2px 2px 0 0; }
+.nav-search { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--txt-soft); margin-left: 8px; transition: border-color 0.15s; }
+.nav-search:hover { border-color: var(--royal); color: var(--royal); }
+.nav-search svg { width: 14px; height: 14px; }
+
+/* ─── HERO ─── */
+.hero { position: relative; height: 540px; overflow: hidden; display: flex; align-items: center; background: var(--navy); }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(12,28,74,0.92) 45%, rgba(12,28,74,0.5) 100%); }
+.hero-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; width: 100%; }
+.hero-content { max-width: 620px; }
+.hero h1 { font-size: 42px; font-weight: 800; color: #fff; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 16px; }
+.hero h1 span { color: var(--gold); }
+.hero-eco-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+.hero-eco-btns { display: flex; gap: 10px; }
+.eco-btn { padding: 13px 30px; font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em; text-decoration: none; border-radius: 5px; transition: transform 0.15s, box-shadow 0.15s; }
+.eco-btn.primary { background: var(--royal); color: #fff; box-shadow: 0 4px 18px rgba(21,53,160,0.5); }
+.eco-btn.primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.eco-btn.secondary { background: var(--gold); color: #fff; box-shadow: 0 4px 18px rgba(184,132,30,0.4); }
+.eco-btn.secondary:hover { transform: translateY(-1px); }
+
+/* ─── DIRECTORY + RENEWAL ─── */
+.dir-section { background: var(--navy); padding: 36px 28px; border-bottom: 3px solid var(--gold); }
+.dir-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.dir-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+.dir-search { display: flex; }
+.dir-search input { flex: 1; padding: 12px 18px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-right: none; border-radius: 5px 0 0 5px; color: #fff; font-family: 'Inter', sans-serif; font-size: 13.5px; outline: none; }
+.dir-search input::placeholder { color: rgba(255,255,255,0.3); }
+.dir-search input:focus { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+.dir-search button { padding: 12px 22px; background: var(--royal); color: #fff; border: none; border-radius: 0 5px 5px 0; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: background 0.15s; }
+.dir-search button:hover { background: var(--blue-dark); }
+.renewal-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.renewal-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.renewal-text { font-size: 12.5px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+.renewal-text strong { color: var(--gold); }
+.renewal-btn { flex-shrink: 0; padding: 11px 22px; background: var(--gold); color: #fff; font-size: 12.5px; font-weight: 700; border-radius: 5px; text-decoration: none; white-space: nowrap; transition: opacity 0.15s; }
+.renewal-btn:hover { opacity: 0.88; }
+
+/* ─── UPDATES TICKER ─── */
+.ticker { background: var(--off); border-bottom: 1px solid var(--border); }
+.ticker-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: stretch; }
+.ticker-label { background: var(--royal); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; display: flex; align-items: center; flex-shrink: 0; }
+.ticker-items { display: flex; align-items: center; gap: 28px; padding: 12px 24px; overflow: hidden; }
+.ticker-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.ticker-date { font-size: 11px; color: var(--txt-soft); flex-shrink: 0; }
+.ticker-text { font-size: 12.5px; font-weight: 500; color: var(--txt-mid); }
+.ticker-sep { color: var(--border); font-size: 14px; }
+
+/* ─── SHARED SECTION ─── */
+.sec { padding: 68px 28px; }
+.sec-inner { max-width: 1240px; margin: 0 auto; }
+.sec-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal); margin-bottom: 8px; }
+.sec-title { font-size: 30px; font-weight: 800; color: var(--txt); letter-spacing: -0.025em; line-height: 1.15; }
+.sec-head { margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+a.view-all { font-size: 13px; font-weight: 600; color: var(--royal); text-decoration: none; }
+a.view-all:hover { text-decoration: underline; }
+
+/* ─── PRESIDENT ─── */
+.president-sec { background: #fff; }
+.president-card { display: grid; grid-template-columns: 300px 1fr; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.president-img-col { background: var(--navy); position: relative; overflow: hidden; }
+.president-img-col img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: grayscale(15%); }
+.president-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-height(to top, rgba(12,28,74,0.9), transparent); background: linear-gradient(to top, rgba(12,28,74,0.92) 0%, transparent 60%); padding: 20px 18px; }
+.president-pname { font-size: 14px; font-weight: 700; color: #fff; }
+.president-ptitle { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+.president-body { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; }
+.president-qmark { font-size: 64px; color: var(--border); line-height: 0.7; font-family: Georgia, serif; margin-bottom: 18px; }
+.president-text { font-size: 14.5px; color: var(--txt-mid); line-height: 1.8; font-style: italic; font-weight: 400; }
+.president-read { margin-top: 26px; display: inline-flex; align-items: center; gap: 7px; background: var(--navy); color: #fff; padding: 11px 24px; border-radius: 5px; font-size: 13px; font-weight: 600; text-decoration: none; width: fit-content; letter-spacing: 0.02em; transition: background 0.15s; }
+.president-read:hover { background: var(--royal); }
+.president-read svg { width: 13px; height: 13px; }
+
+/* ─── MEDIA TILES ─── */
+.media-sec { background: var(--off); }
+.media-grid { display: grid; grid-template-columns: 1.6fr 1fr 0.7fr; gap: 14px; }
+.tile { border-radius: 10px; overflow: hidden; position: relative; display: block; text-decoration: none; }
+.tile img { width: 100%; display: block; object-fit: cover; transition: transform 0.4s ease; }
+.tile:hover img { transform: scale(1.03); }
+.tile-lg img { height: 360px; }
+.tile-md img { height: 360px; }
+.tile-sm img { height: 172px; }
+.tile-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%); }
+.tile-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; }
+.tile-title { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.01em; margin-bottom: 10px; line-height: 1.2; }
+.tile-sm .tile-title { font-size: 13px; margin-bottom: 8px; }
+.tile-readmore { display: inline-block; border: 1.5px solid rgba(255,255,255,0.6); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; padding: 5px 14px; border-radius: 3px; transition: background 0.15s; }
+.tile:hover .tile-readmore { background: rgba(255,255,255,0.18); }
+.tile-right { display: flex; flex-direction: column; gap: 14px; }
+
+/* ─── PROJECTS ─── */
+.projects-sec { background: #fff; }
+.projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.proj-card { border: 1px solid var(--border); border-radius: 10px; padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; }
+.proj-card:hover { box-shadow: var(--shadow); border-color: #b0bde0; transform: translateY(-2px); }
+.proj-logo { width: 80px; height: 64px; display: flex; align-items: center; justify-content: center; }
+.proj-logo img { max-width: 80px; max-height: 64px; object-fit: contain; filter: grayscale(20%); transition: filter 0.2s; }
+.proj-card:hover .proj-logo img { filter: grayscale(0%); }
+.proj-name { font-size: 12.5px; font-weight: 600; color: var(--txt-mid); line-height: 1.45; }
+
+/* ─── FOOTER ─── */
+footer { background: #3d3d3d; color: rgba(255,255,255,0.6); }
+.footer-main { max-width: 1240px; margin: 0 auto; padding: 52px 28px 40px; display: grid; grid-template-columns: 1.7fr 1fr 1.5fr; gap: 52px; }
+.f-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.f-about { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 18px; }
+.f-map { width: 100%; height: 140px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.f-map iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(30%); }
+.f-links a { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.15s; line-height: 1.45; }
+.f-links a:hover { color: rgba(255,255,255,0.9); }
+.f-links a::before { content: '→'; color: rgba(255,255,255,0.25); font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+.f-address { font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 16px; }
+.f-contact-btn { display: flex; align-items: center; gap: 9px; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 10px 15px; font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; margin-bottom: 8px; transition: border-color 0.15s, color 0.15s; }
+.f-contact-btn:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+.f-contact-btn svg { width: 14px; height: 14px; fill: none; stroke: rgba(255,255,255,0.4); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.qr-block { display: flex; gap: 14px; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; margin-top: 16px; }
+.qr-block img { width: 58px; height: 58px; border-radius: 5px; flex-shrink: 0; background: #fff; }
+.qr-info strong { display: block; font-size: 12.5px; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+.qr-info span { font-size: 11.5px; color: rgba(255,255,255,0.4); line-height: 1.55; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-bottom-inner { max-width: 1240px; margin: 0 auto; padding: 16px 28px; display: flex; justify-content: space-between; font-size: 11.5px; color: rgba(255,255,255,0.3); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="https://scci.com.pk/visa-letter-verification/">Visa Letter Verification</a>
+      <a href="https://scci.com.pk/name-reservation-form/">Name Reservation</a>
+      <a href="https://forms.scci.com.pk/">Certificate of Origin</a>
+    </div>
+    <div class="topbar-right">
+      <a href="http://jobs.scci.com.pk">Jobs</a>
+      <a href="http://library.scci.com.pk">Digital Library</a>
+      <div class="topbar-socials">
+        <a href="https://www.facebook.com/chamber.sialkot/" title="Facebook">f</a>
+        <a href="https://www.instagram.com/sccisialkot/" title="Instagram">ig</a>
+        <a href="https://twitter.com/sccisialkot/" title="Twitter">tw</a>
+        <a href="https://www.linkedin.com/company/sialkot-chamber-of-commerce-and-industry/" title="LinkedIn">in</a>
+        <a href="https://www.youtube.com/c/TheSialkotChamberofCommerceIndustry" title="YouTube">yt</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="https://scci.com.pk/">
+      <img src="https://scci.com.pk/jotelab/2023/10/logo.png" alt="SCCI Logo">
+    </a>
+    <div class="nav-links">
+      <a href="https://scci.com.pk/" class="active">HOME</a>
+      <a href="https://scci.com.pk/profile/">ABOUT SCCI</a>
+      <a href="https://scci.com.pk/visa-recommendatory-letters/">SERVICES</a>
+      <a href="https://scci.com.pk/members-directory/">MEMBERSHIP</a>
+      <a href="https://scci.com.pk/trade-data/">R & D</a>
+      <a href="https://scci.com.pk/election/">ELECTIONS</a>
+      <div class="nav-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://scci.com.pk/jotelab/2023/10/SCCI-Building-New.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1>The Sialkot Chamber<br>of Commerce &<br><span>Industry</span></h1>
+      <div style="margin-bottom: 28px;"></div>
+      <div class="hero-eco-label">Electronic Certificate of Origin (PSW & SCCI)</div>
+      <div class="hero-eco-btns">
+        <a href="https://app.psw.gov.pk/app/" class="eco-btn primary">PSW ECO</a>
+        <a href="https://forms.scci.com.pk/" class="eco-btn secondary">SCCI ECO</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTORY + RENEWAL -->
+<div class="dir-section">
+  <div class="dir-inner">
+    <div>
+      <div class="dir-label">Member's Directory</div>
+      <div class="dir-search">
+        <input type="text" placeholder="Enter Company Name or ID">
+        <button>SEARCH</button>
+      </div>
+    </div>
+    <div class="renewal-box">
+      <div>
+        <div class="renewal-title">Membership Renewal</div>
+        <div class="renewal-text">Online membership renewal fees for the year <strong>2025-26</strong> are now available for one year only. Click below to proceed swiftly and secure your benefits!</div>
+      </div>
+      <a href="#" class="renewal-btn">Renew Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-label">Latest Updates</div>
+    <div class="ticker-items">
+      <div class="ticker-item">
+        <span class="ticker-date">Aug 10, 2023</span>
+        <span class="ticker-text">Investment Opportunity in AirSial with Exclusive Discounts</span>
+      </div>
+      <span class="ticker-sep">|</span>
+      <div class="ticker-item">
+        <span class="ticker-date">Apr 29, 2023</span>
+        <span class="ticker-text">BOM comprising of the members nominated</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRESIDENT MESSAGE -->
+<section class="sec president-sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">Leadership</div>
+        <div class="sec-title">President Message</div>
+      </div>
+      <a href="https://scci.com.pk/presidents-message/" class="view-all">Read full message →</a>
+    </div>
+    <div class="president-card">
+      <div class="president-img-col">
+        <img src="https://scci.com.pk/jotelab/2024/10/S.-Ahtesham-Mzhar-331x400.jpg" alt="Syed Ahtesham Mazhar — President SCCI">
+        <div class="president-img-overlay">
+          <div class="president-pname">Syed Ahtesham Mazhar</div>
+          <div class="president-ptitle">President, SCCI 2025–2026</div>
+        </div>
+      </div>
+      <div class="president-body">
+        <div class="president-qmark">"</div>
+        <p class="president-text">At the outset, with all the humbleness and with a sense of thankfulness to my Allah, I, along with my worthy Senior Vice President, Mr. Muhammad Murad Arshad and Vice President, Mr. Salman Sheikh convey our deepest sense of gratitude for reposing unflinching confidence on us in our election to manage the affairs of The Sialkot Chamber of Commerce and Industry, Sialkot for the year 2025-2026.</p>
+        <a href="https://scci.com.pk/presidents-message/" class="president-read">
+          Read More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m5 12h14m-7-7 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA TILES -->
+<section class="sec media-sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">Media & Publications</div>
+        <div class="sec-title">Events, Bulletins & Galleries</div>
+      </div>
+    </div>
+    <div class="media-grid">
+      <a class="tile tile-lg" href="https://scci.com.pk/fair-and-exhibition/">
+        <img src="https://scci.com.pk/jotelab/2022/08/fairexhibition.jpg" alt="Fair & Exhibitions">
+        <div class="tile-overlay"></div>
+        <div class="tile-body">
+          <div class="tile-title">FAIR & EXHIBITIONS</div>
+          <span class="tile-readmore">READ MORE</span>
+        </div>
+      </a>
+      <a class="tile tile-md" href="https://scci.com.pk/fortnightly-bulletin-new/">
+        <img src="https://scci.com.pk/jotelab/2022/08/Fortnightly-Bulletin.jpg" alt="Fortnightly Bulletin">
+        <div class="tile-overlay"></div>
+        <div class="tile-body">
+          <div class="tile-title">FORTNIGHTLY BULLETIN</div>
+          <span class="tile-readmore">READ MORE</span>
+        </div>
+      </a>
+      <div class="tile-right">
+        <a class="tile tile-sm" href="https://scci.com.pk/video-gallery/">
+          <img src="https://scci.com.pk/jotelab/2022/08/video-gallery.jpg" alt="Video Gallery">
+          <div class="tile-overlay"></div>
+          <div class="tile-body">
+            <div class="tile-title">VIDEO GALLERY</div>
+            <span class="tile-readmore">READ MORE</span>
+          </div>
+        </a>
+        <a class="tile tile-sm" href="https://scci.com.pk/photo-gallery/">
+          <img src="https://scci.com.pk/jotelab/2022/08/photo-gallery.jpg" alt="Photo Gallery">
+          <div class="tile-overlay"></div>
+          <div class="tile-body">
+            <div class="tile-title">PHOTO GALLERY</div>
+            <span class="tile-readmore">READ MORE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PROJECTS -->
+<section class="sec projects-sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">Sialkot's Legacy</div>
+        <div class="sec-title">Our Projects</div>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SBCC.jpg" alt="SBCC"></div><div class="proj-name">Sialkot Business & Commerce Center</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIDC.jpg" alt="SIDC"></div><div class="proj-name">Sports Industry Development Centre</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/EPZ.jpg" alt="EPZ"></div><div class="proj-name">Sialkot Export Processing Zone</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/STZ.jpg" alt="Sialkot Tannery Zone"></div><div class="proj-name">Sialkot Tannery Zone</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIA-1.jpg" alt="Sialkot International Airport"></div><div class="proj-name">Sialkot International Airport</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SDT.jpg" alt="Sialkot Dry Port Trust"></div><div class="proj-name">Sialkot Dry Port Trust</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SSC.jpg" alt="Seerat Study Centre"></div><div class="proj-name">Seerat Study Centre</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/STC.jpg" alt="STC"></div><div class="proj-name">Sialkot Transport Company STC</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIAL.jpg" alt="Air Sial"></div><div class="proj-name">Air Sial</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/CSDO.jpg" alt="CSDO"></div><div class="proj-name">Child & Social Development Organization</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/KKRTS-1.jpg" alt="KKRTS"></div><div class="proj-name">Khud Kifalat Rozgar Trust</div></a>
+      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SCP.jpg" alt="SCP"></div><div class="proj-name">Sialkot City Package</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="f-title">About Us</div>
+      <p class="f-about">The Sialkot Chamber of Commerce and Industry is the premier trade body representing the export-oriented industry of Sialkot. The Chamber was established in 1982 and the late Mr. A. D. Bhutta was its founder, President.</p>
+      <div class="f-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d841.1710749998347!2d74.537325985172!3d32.507866074013236!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391eea507d875a03%3A0x619e77a481064ca4!2sThe%20Sialkot%20Chamber%20of%20Commerce%20and%20Industries!5e0!3m2!1sen!2sus!4v1697614314655!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div>
+      <div class="f-title">Useful Links</div>
+      <div class="f-links">
+        <a href="https://wrc-scci.com/">Women Resource Center</a>
+        <a href="https://wccis.pk/">Women Chamber of Commerce & Industry Sialkot</a>
+        <a href="https://scci.com.pk/clep/">CLEP</a>
+        <a href="https://scci.com.pk/jotelab/2025/11/IPO-Flyer.pdf">Intellectual Property Organization</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-title">Contact Info</div>
+      <p class="f-address">Sialkot Chamber of Commerce & Industry<br>P.O. Box 1870, Shahrah-e-Aiwan-e-Sanat-o-Tijarat,<br>Sialkot City 51310 – Pakistan</p>
+      <a href="tel:+925242618813" class="f-contact-btn">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.1 2.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.32a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Phone: +92 52 4261881-3
+      </a>
+      <a href="tel:+925242267919" class="f-contact-btn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="14" rx="2"/><polyline points="22 8 12 13 2 8"/></svg>
+        Fax: +92 52 4267919
+      </a>
+      <a href="mailto:sialkot@scci.com.pk" class="f-contact-btn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        sialkot@scci.com.pk
+      </a>
+      <div class="qr-block">
+        <img src="https://scci.com.pk/jotelab/2026/02/app-qr-code.jpeg" alt="SCCI App QR Code">
+        <div class="qr-info">
+          <strong>Download SCCI Mobile App</strong>
+          <span>Scan the QR code to install the Sialkot Chamber of Commerce & Industry mobile application.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>Copyright 2026 © R&D Department (SCCI)</span>
+      <span>scci.com.pk</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
