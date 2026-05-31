@@ -123,32 +123,45 @@ a.view-all:hover { text-decoration: underline; }
 .president-read:hover { background: var(--royal); }
 .president-read svg { width: 13px; height: 13px; }
 
-/* ─── MEDIA TILES ─── */
-.media-sec { background: var(--off); }
-.media-grid { display: grid; grid-template-columns: 1.6fr 1fr 0.7fr; gap: 14px; }
-.tile { border-radius: 10px; overflow: hidden; position: relative; display: block; text-decoration: none; }
-.tile img { width: 100%; display: block; object-fit: cover; transition: transform 0.4s ease; }
-.tile:hover img { transform: scale(1.03); }
-.tile-lg img { height: 360px; }
-.tile-md img { height: 360px; }
-.tile-sm img { height: 172px; }
-.tile-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%); }
-.tile-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; }
-.tile-title { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.01em; margin-bottom: 10px; line-height: 1.2; }
-.tile-sm .tile-title { font-size: 13px; margin-bottom: 8px; }
-.tile-readmore { display: inline-block; border: 1.5px solid rgba(255,255,255,0.6); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; padding: 5px 14px; border-radius: 3px; transition: background 0.15s; }
-.tile:hover .tile-readmore { background: rgba(255,255,255,0.18); }
-.tile-right { display: flex; flex-direction: column; gap: 14px; }
+/* ─── MEDIA: editorial row layout ─── */
+.media-sec { background: var(--navy); padding: 68px 0; }
+.media-sec .sec-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+.media-sec .sec-tag { color: rgba(255,255,255,0.45); }
+.media-sec .sec-title { color: #fff; margin-bottom: 36px; }
+.media-row { display: flex; gap: 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; }
+.media-item { flex: 1; position: relative; overflow: hidden; display: block; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.08); }
+.media-item:last-child { border-right: none; }
+.media-item img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease; filter: brightness(0.7) saturate(0.85); }
+.media-item:hover img { transform: scale(1.06); filter: brightness(0.55) saturate(0.9); }
+.media-item-body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 20px; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.0) 60%); }
+.media-item-num { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; margin-bottom: 6px; }
+.media-item-title { font-size: 14px; font-weight: 800; color: #fff; letter-spacing: 0.03em; line-height: 1.25; margin-bottom: 12px; text-transform: uppercase; }
+.media-item-link { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.media-item:hover .media-item-link { color: #fff; border-color: rgba(255,255,255,0.6); }
+.media-item-link svg { width: 11px; height: 11px; }
 
-/* ─── PROJECTS ─── */
-.projects-sec { background: #fff; }
-.projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.proj-card { border: 1px solid var(--border); border-radius: 10px; padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; }
-.proj-card:hover { box-shadow: var(--shadow); border-color: #b0bde0; transform: translateY(-2px); }
-.proj-logo { width: 80px; height: 64px; display: flex; align-items: center; justify-content: center; }
-.proj-logo img { max-width: 80px; max-height: 64px; object-fit: contain; filter: grayscale(20%); transition: filter 0.2s; }
-.proj-card:hover .proj-logo img { filter: grayscale(0%); }
-.proj-name { font-size: 12.5px; font-weight: 600; color: var(--txt-mid); line-height: 1.45; }
+/* ─── PROJECTS: marquee strip layout ─── */
+.projects-sec { background: var(--off); overflow: hidden; padding: 68px 0; }
+.projects-sec .sec-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+.projects-sec .sec-head { margin-bottom: 36px; }
+.proj-strip-wrap { position: relative; }
+.proj-strip-wrap::before,
+.proj-strip-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
+.proj-strip-wrap::before { left: 0; background: linear-gradient(to right, var(--off), transparent); }
+.proj-strip-wrap::after { right: 0; background: linear-gradient(to left, var(--off), transparent); }
+.proj-strip { display: flex; gap: 14px; overflow-x: auto; padding: 8px 4px 20px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; scroll-snap-type: x mandatory; }
+.proj-strip::-webkit-scrollbar { height: 4px; }
+.proj-strip::-webkit-scrollbar-track { background: transparent; }
+.proj-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.proj-item { flex: 0 0 180px; scroll-snap-align: start; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 22px 16px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.18s; }
+.proj-item:hover { box-shadow: var(--shadow); border-color: var(--royal); transform: translateY(-3px); }
+.proj-item-num { font-size: 10px; font-weight: 700; color: var(--royal); letter-spacing: 0.1em; align-self: flex-start; opacity: 0.5; }
+.proj-item-img { width: 72px; height: 56px; display: flex; align-items: center; justify-content: center; }
+.proj-item-img img { max-width: 72px; max-height: 56px; object-fit: contain; transition: filter 0.2s; }
+.proj-item:hover .proj-item-img img { filter: none; }
+.proj-item-name { font-size: 12px; font-weight: 600; color: var(--txt-mid); line-height: 1.4; }
+.proj-scroll-hint { text-align: center; margin-top: 4px; font-size: 11.5px; color: var(--txt-soft); display: flex; align-items: center; justify-content: center; gap: 6px; }
+.proj-scroll-hint svg { width: 13px; height: 13px; }
 
 /* ─── FOOTER ─── */
 footer { background: #3d3d3d; color: rgba(255,255,255,0.6); }
@@ -303,76 +316,87 @@ footer { background: #3d3d3d; color: rgba(255,255,255,0.6); }
   </div>
 </section>
 
-<!-- MEDIA TILES -->
-<section class="sec media-sec">
+<!-- MEDIA: editorial row -->
+<section class="media-sec">
   <div class="sec-inner">
-    <div class="sec-head">
-      <div>
-        <div class="sec-tag">Media & Publications</div>
-        <div class="sec-title">Events, Bulletins & Galleries</div>
-      </div>
-    </div>
-    <div class="media-grid">
-      <a class="tile tile-lg" href="https://scci.com.pk/fair-and-exhibition/">
+    <div class="sec-tag">Media & Publications</div>
+    <div class="sec-title">Events, Bulletins & Galleries</div>
+    <div style="margin-bottom:36px;"></div>
+    <div class="media-row">
+      <a class="media-item" href="https://scci.com.pk/fair-and-exhibition/">
         <img src="https://scci.com.pk/jotelab/2022/08/fairexhibition.jpg" alt="Fair & Exhibitions">
-        <div class="tile-overlay"></div>
-        <div class="tile-body">
-          <div class="tile-title">FAIR & EXHIBITIONS</div>
-          <span class="tile-readmore">READ MORE</span>
+        <div class="media-item-body">
+          <div class="media-item-num">01</div>
+          <div class="media-item-title">Fair &<br>Exhibitions</div>
+          <span class="media-item-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m5 12h14m-7-7 7 7-7 7"/></svg>
+          </span>
         </div>
       </a>
-      <a class="tile tile-md" href="https://scci.com.pk/fortnightly-bulletin-new/">
+      <a class="media-item" href="https://scci.com.pk/fortnightly-bulletin-new/">
         <img src="https://scci.com.pk/jotelab/2022/08/Fortnightly-Bulletin.jpg" alt="Fortnightly Bulletin">
-        <div class="tile-overlay"></div>
-        <div class="tile-body">
-          <div class="tile-title">FORTNIGHTLY BULLETIN</div>
-          <span class="tile-readmore">READ MORE</span>
+        <div class="media-item-body">
+          <div class="media-item-num">02</div>
+          <div class="media-item-title">Fortnightly<br>Bulletin</div>
+          <span class="media-item-link">Read
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m5 12h14m-7-7 7 7-7 7"/></svg>
+          </span>
         </div>
       </a>
-      <div class="tile-right">
-        <a class="tile tile-sm" href="https://scci.com.pk/video-gallery/">
-          <img src="https://scci.com.pk/jotelab/2022/08/video-gallery.jpg" alt="Video Gallery">
-          <div class="tile-overlay"></div>
-          <div class="tile-body">
-            <div class="tile-title">VIDEO GALLERY</div>
-            <span class="tile-readmore">READ MORE</span>
-          </div>
-        </a>
-        <a class="tile tile-sm" href="https://scci.com.pk/photo-gallery/">
-          <img src="https://scci.com.pk/jotelab/2022/08/photo-gallery.jpg" alt="Photo Gallery">
-          <div class="tile-overlay"></div>
-          <div class="tile-body">
-            <div class="tile-title">PHOTO GALLERY</div>
-            <span class="tile-readmore">READ MORE</span>
-          </div>
-        </a>
-      </div>
+      <a class="media-item" href="https://scci.com.pk/video-gallery/">
+        <img src="https://scci.com.pk/jotelab/2022/08/video-gallery.jpg" alt="Video Gallery">
+        <div class="media-item-body">
+          <div class="media-item-num">03</div>
+          <div class="media-item-title">Video<br>Gallery</div>
+          <span class="media-item-link">Watch
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m5 12h14m-7-7 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a class="media-item" href="https://scci.com.pk/photo-gallery/">
+        <img src="https://scci.com.pk/jotelab/2022/08/photo-gallery.jpg" alt="Photo Gallery">
+        <div class="media-item-body">
+          <div class="media-item-num">04</div>
+          <div class="media-item-title">Photo<br>Gallery</div>
+          <span class="media-item-link">View
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m5 12h14m-7-7 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- OUR PROJECTS -->
-<section class="sec projects-sec">
+<!-- OUR PROJECTS: horizontal scroll strip -->
+<section class="projects-sec">
   <div class="sec-inner">
     <div class="sec-head">
       <div>
         <div class="sec-tag">Sialkot's Legacy</div>
         <div class="sec-title">Our Projects</div>
       </div>
+      <a href="https://scci.com.pk/projects/" class="view-all">View all →</a>
     </div>
-    <div class="projects-grid">
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SBCC.jpg" alt="SBCC"></div><div class="proj-name">Sialkot Business & Commerce Center</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIDC.jpg" alt="SIDC"></div><div class="proj-name">Sports Industry Development Centre</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/EPZ.jpg" alt="EPZ"></div><div class="proj-name">Sialkot Export Processing Zone</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/STZ.jpg" alt="Sialkot Tannery Zone"></div><div class="proj-name">Sialkot Tannery Zone</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIA-1.jpg" alt="Sialkot International Airport"></div><div class="proj-name">Sialkot International Airport</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SDT.jpg" alt="Sialkot Dry Port Trust"></div><div class="proj-name">Sialkot Dry Port Trust</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SSC.jpg" alt="Seerat Study Centre"></div><div class="proj-name">Seerat Study Centre</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/STC.jpg" alt="STC"></div><div class="proj-name">Sialkot Transport Company STC</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SIAL.jpg" alt="Air Sial"></div><div class="proj-name">Air Sial</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/CSDO.jpg" alt="CSDO"></div><div class="proj-name">Child & Social Development Organization</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/KKRTS-1.jpg" alt="KKRTS"></div><div class="proj-name">Khud Kifalat Rozgar Trust</div></a>
-      <a class="proj-card" href="#"><div class="proj-logo"><img src="https://scci.com.pk/jotelab/2022/08/SCP.jpg" alt="SCP"></div><div class="proj-name">Sialkot City Package</div></a>
+    <div class="proj-strip-wrap">
+      <div class="proj-strip">
+        <a class="proj-item" href="#"><div class="proj-item-num">01</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SBCC.jpg" alt="SBCC"></div><div class="proj-item-name">Sialkot Business & Commerce Center</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">02</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SIDC.jpg" alt="SIDC"></div><div class="proj-item-name">Sports Industry Development Centre</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">03</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/EPZ.jpg" alt="EPZ"></div><div class="proj-item-name">Sialkot Export Processing Zone</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">04</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/STZ.jpg" alt="STZ"></div><div class="proj-item-name">Sialkot Tannery Zone</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">05</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SIA-1.jpg" alt="SIA"></div><div class="proj-item-name">Sialkot International Airport</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">06</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SDT.jpg" alt="SDT"></div><div class="proj-item-name">Sialkot Dry Port Trust</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">07</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SSC.jpg" alt="SSC"></div><div class="proj-item-name">Seerat Study Centre</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">08</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/STC.jpg" alt="STC"></div><div class="proj-item-name">Sialkot Transport Company STC</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">09</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SIAL.jpg" alt="Air Sial"></div><div class="proj-item-name">Air Sial</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">10</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/CSDO.jpg" alt="CSDO"></div><div class="proj-item-name">Child & Social Development Organization</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">11</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/KKRTS-1.jpg" alt="KKRTS"></div><div class="proj-item-name">Khud Kifalat Rozgar Trust</div></a>
+        <a class="proj-item" href="#"><div class="proj-item-num">12</div><div class="proj-item-img"><img src="https://scci.com.pk/jotelab/2022/08/SCP.jpg" alt="SCP"></div><div class="proj-item-name">Sialkot City Package</div></a>
+      </div>
+    </div>
+    <div class="proj-scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+      Scroll to see all 12 projects
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
     </div>
   </div>
 </section>
